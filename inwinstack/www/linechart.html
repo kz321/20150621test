@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<link rel="stylesheet" href="js/main.css">	
+	<script src='js/timeout.js'></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>      
+    <script type="text/javascript" src="PushNotification.js"></script>        
+	<script type="text/javascript" src="js/gcm.js"></script>
+	<title>Line Chart</title>
+	<!--載入必要Angularjs-->
+    <script src="js/chart/angular.js"></script>
+    <script src="js/chart/d3.js"></script>
+    <script src="js/chart/nv.d3.js"></script>
+    <script src="js/chart/moment.js"></script>
+    <script src="js/chart/angularjs-nvd3-directives.js"></script>
+    <link rel="stylesheet" href="css/nv.d3.css"/>
+	<!--繪圖js-->	
+	<script src="js/chart/linechart.js"></script>
+	<script>
+		$(document).ready(function(){
+			var ceilmeter_title = localStorage.getItem('ceilmeter_title');
+			//console.log(a);	
+			$('#title').text(ceilmeter_title);
+		});
+	</script>
+</head>
+<body ng-app='nvd3TestApp'>
+	<div data-role="page" id='home'>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1 id='title'>linechart</h1>
+			<a data-icon="back" href='ceilmeter.html' data-ajax = 'false'>上一頁</a>
+		</div>
+		<div data-role="content">	
+			<ul data-role="listview" id='detail'>
+			<li id='instance_chart'>
+			<h5 id='unit'>單位</h5>
+			<div ng-controller="ExampleCtrl">
+				<nvd3-line-chart
+					data="exampleData"
+					id="toolTipContentExample"
+					width="300"
+					height="300"
+					showXAxis="true"
+					showYAxis="true"
+					tooltips="true"
+					interactive="true"
+					useInteractiveGuideLine="true"
+					margin="{left:70,top:10,bottom:50,right:70}"
+					xAxisTickFormat="xAxisTickFormat()"
+					>
+				<svg></svg>
+				</nvd3-line-chart>
+			</div>
+			</li>
+			</ul>
+		</div>		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1 id='title'>實踐大學高雄校區-資訊管理系</h1>
+		</div>
+	</div>
+</body>
+</html>

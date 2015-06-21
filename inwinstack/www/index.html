@@ -1,0 +1,77 @@
+﻿
+<html>
+<head>
+	<title>com.PhoneGap.c2dm</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="js/main.css">
+
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<script type="text/javascript" src="js/nas_login.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
+	<script type="text/javascript" src="js/gcm.js"></script>
+
+</head>
+<body>
+	    
+	<div id="index" data-url="index" data-role="page">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>雲端電源監控系統</h1>
+			<div data-role="navbar">
+			</div>	
+		</div>
+		<div data-role="content">
+			<div data-role="popup" id="PushNotification" data-position-to="window">
+			</div>	
+			<div id ="logo">
+				<center>
+					<img src="img/OpenStack.png" width="172" height="172" >
+				</center>
+			</div> 
+			<div id="login2" data-theme="a">
+				<table width='100%'>
+				<tr>
+				<td><span id="id">帳號：</span></td>
+				<td><input type="text" name="username" id="username"/></td>
+				</tr>				
+				<tr>
+				<td><span id="password">密碼：</span></td>
+				<td><input type="password" name="password" id="psw"/></td>
+				</tr>	
+				</table>
+				<table width='100%'>
+				<tr>
+				<td width='70%'><h4>記住帳號</h4></td>
+				<td><form id="re_actform">
+					<select name="re_account" id="re_account" data-role="flipswitch" data-mini="false">
+						<option value="off" SELECTED>Off</option>
+						<option value="on">On</option>
+					</select>
+				</form></td>
+				</tr>
+				<tr>
+				<td width='70%'><h4>記住密碼</h4></td>
+				<td><form id="re_psdform">
+					<select name="re_password" id="re_password" data-role="flipswitch" data-mini="false">
+						<option value="off" SELECTED>Off</option>
+						<option value="on">On</option>
+					</select>
+				</form></td>
+				</tr>				
+				</table>							
+				<div id ="login" >
+					<input type="button"  id="login1" value="登入"/>
+				</div>
+			</div>
+			
+			<div id="result" style="display:none">
+			</div>
+		</div>			
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>實踐大學高雄校區-資訊管理系</h1>
+		</div>	
+</body>
+</html>

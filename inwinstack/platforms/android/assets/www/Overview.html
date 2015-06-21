@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>Text</title>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>	
+	<link rel="stylesheet" href="js/main.css">	
+	<script src='js/timeout.js'></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>      
+    <script type="text/javascript" src="PushNotification.js"></script>        
+	<script type="text/javascript" src="js/gcm.js"></script>
+	<!--繪圖-->
+	<script src="js/chart/jquery.min.js"></script>
+	<script src="js/chart/bpchart.js"></script>	
+
+	<!--swipe-->
+	<link rel="stylesheet" href="css/idangerous.swiper.css">
+	<script src="js/idangerous.swiper-2.1.min.js"></script>
+	<link rel="stylesheet" href="css/swipe.css">	
+</head>
+<body>
+	<style>
+	.title,.title2,.title3,.title4,.title5,.title6,.title7{
+		font-size : 150%;
+		color : black;
+		text-align: center;
+		margin:0px 0px 20px 0px;
+		font-weight : bold;
+	}
+	.container,.container2,.container3,.container4,.container5,.container6,.container7{
+		width: 100%;
+		border: 1px solid #ddd;
+		border-radius: 5px; 
+		overflow: hidden;
+		display:inline-block;
+		margin:0px 10px 5px 0px;
+		vertical-align:top;
+	}
+	.progressbar,.progressbar2,.progressbar3,.progressbar4,.progressbar5,.progressbar6,.progressbar7{
+		font-size : 180%;
+		color: green;
+		text-align: right;
+		height: 7%;
+		width: 0;
+		background-color: lightgreen; 
+		border-radius: 3px; 
+	}
+	#detail,#detail2,#detail3,#detail4,#detail5,#detail6,#detail7{
+		font-size : 120%;
+		color : gray;
+	}
+	#used,#unused,#total,#used2,#unused2,#total2,#used3,#unused3,#total3,#used4,#unused4,#total4,#used5,#unused5,#total5,#used6,#unused6,#total6,#used7,#unused7,#total7{
+		font-size : 150%;
+		color : gray;
+		margin:30px 0px 20px 0px;
+		font-weight : bold;		
+	}
+	</style>
+	<div data-role="header" data-position="fixed" data-theme="b">
+		<h1>資源概況</h1>
+		<a data-icon="grid" href='menu.html' data-ajax = 'false'>主畫面</a>
+	</div>
+<div class="device">
+
+	<div class="swiper-container">
+		<div class="swiper-wrapper">	
+			<!--Instances-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title'></div>	
+					<div class="container">
+						<div class="progressbar"></div>
+					</div>								
+					<div id='used'></div>
+					<div id='unused'></div>
+					<div id='total'></div>					
+				</div>
+			</div>
+			<!--VCPUs-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title2'></div>	
+					<div class="container2">
+						<div class="progressbar2"></div>
+					</div>			
+					<div id='used2'></div>
+					<div id='unused2'></div>
+					<div id='total2'></div>		
+				</div>
+			</div>
+			<!--RAM-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title3'></div>	
+					<div class="container3">
+						<div class="progressbar3"></div>
+					</div>				
+					<div id='used3'></div>
+					<div id='unused3'></div>
+					<div id='total3'></div>		
+				</div>
+			</div>
+			<!--Floating_IPs-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title4'></div>	
+					<div class="container4">
+						<div class="progressbar4"></div>
+					</div>				
+					<div id='used4'></div>
+					<div id='unused4'></div>
+					<div id='total4'></div>		
+				</div>
+			</div>
+
+			<!--Security_Groups-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title5'></div>	
+					<div class="container5">
+						<div class="progressbar5"></div>
+					</div>				
+					<div id='used5'></div>
+					<div id='unused5'></div>
+					<div id='total5'></div>		
+				</div>
+			</div>
+			<!--Volumes-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title6'></div>	
+					<div class="container6">
+						<div class="progressbar6"></div>
+					</div>					
+					<div id='used6'></div>
+					<div id='unused6'></div>
+					<div id='total6'></div>		
+				</div>
+			</div>
+			<!--Volume_Storage-->
+			<div class="swiper-slide">
+				<div class="content-slide">
+					<div class='title7'></div>	
+					<div class="container7">
+						<div class="progressbar7"></div>
+					</div>				
+					<div id='used7'></div>
+					<div id='unused7'></div>
+					<div id='total7'></div>						
+				</div>
+			</div>			
+		</div>
+	</div>		
+</div>	
+<div data-role="footer" data-position="fixed" data-theme="b">	
+	<div class="pagination"></div>	
+</div>	
+</body>
+</html>	

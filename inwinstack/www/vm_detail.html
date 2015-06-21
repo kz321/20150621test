@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+		<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+		<script type="text/javascript" src='js/timeout.js'></script>
+</head>
+<script>
+		$(document).ready(function(){
+			$('#info_1').text('名稱：'+localStorage.getItem('VM_name'));
+			$('#info_2').text('CPU數量：'+localStorage.getItem('VM_vcpus')+' 個');
+			$('#info_3').text('記憶體：'+localStorage.getItem('VM_ram')+' MB');
+			$('#info_4').text('總容量：'+localStorage.getItem('VM_disk')+' GB');
+			$('#info_5').text('映像檔：'+localStorage.getItem('VM_image'));
+			$('#info_6').text('狀態：'+localStorage.getItem('VM_status'));
+			//VM_status
+			if (localStorage.getItem('VM_status')=="active")
+			{
+				document.getElementById('open').disabled=true;
+			}
+			if (localStorage.getItem('VM_status')=="shutoff")
+			{
+				document.getElementById('close').disabled=true;
+			}
+			
+			$('#close').click(function(){
+					$.ajax({
+						url: "https://163.15.192.205/vany/index.php/gcm/control_instance",
+						type: "POST",	
+						cache: false,
+						crossDomain: true,
+						success: Success04,
+						error: Error,	
+						data:{
+							token:localStorage.getItem('token'),
+							server_id:localStorage.getItem('id0')
+						},
+						contentType: "application/x-www-form-urlencoded; charset=utf-8",
+						dataType: "html"				
+					});
+			});
+		});
+		
+		function Success04(data)
+		{
+			//alert(data);
+			console.log(data)
+		}
+		function Error(data)
+		{
+			alert(data);
+			console.log(data)
+		}
+</script>
+
+
+<body>
+	<div data-role="page" data-fullscreen="true" id = "login" data-theme="a">
+		<div data-role="header"data-position="fixed"  data-theme="b">
+			<h1>虛擬機詳細資訊</h1>
+			<a data-icon="grid" href='vm_info.html' data-ajax = 'false'>上一頁</a>
+		</div>
+		<div data-role="content">
+			<h3 id=info_1>名稱：</h3>
+			<h3 id=info_2>CPU數量：</h3>
+			<h3 id=info_3>記憶體：</h3>
+			<h3 id=info_4>總容量：</h3>
+			<h3 id=info_5>映像檔：</h3>
+			<h3 id=info_6>狀態：</h3>
+			<table>
+				<tr >
+					<h3>遠端控制:</h3>
+					<td>
+						<button id="open">開機</button>
+					</td>
+					<td >
+						<button id="close">關機</button>
+					</td>
+				</tr>
+			</table>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>實踐大學高雄校區-資訊管理系</h1>
+		</div>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>Active respond</title>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<link rel="stylesheet" href="js/main.css">	
+	<script src='js/timeout.js'></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>      
+    <script type="text/javascript" src="PushNotification.js"></script>        
+	<script type="text/javascript" src="js/gcm.js"></script>
+	<script>
+		$(document).ready(function(){	
+			
+			$('#btn').click(function(){
+			
+				if ($('#title').val()!=0)
+				{
+					var sender = localStorage.getItem('name');
+					var level = $('#title').val();
+					var message = $('#message').val();
+					var information = $('#information').val();				
+					//alert(level+'***'+message+'***'+information+'***'+sender);
+					
+					$.ajax({
+						url: "https://163.15.192.205/vany/index.php/mobile/sendMsg/format/json",
+						type: "POST",	
+						cache: false,
+						crossDomain: true,
+						success: Success,
+						error: Error,			
+						data: {
+							sender : sender,
+							level : level,
+							message : message,
+							info : information
+						},
+						contentType: "application/x-www-form-urlencoded; charset=utf-8",
+						dataType: "html"
+					});	
+				}
+				else
+				{
+					alert("請選擇訊息等級");
+				}
+			});		
+		});
+		
+		function getval(){		
+			var title = $('#title').val();
+			var textarea = $('#content').val();
+			document.getElementById("chose").selected=true;
+			$('#content').val('');
+			
+		}	
+
+		function Success(data){
+			//alert('Success0 : '+data);
+			var res = jQuery.parseJSON(data);
+			var android_success = res['android']['success'];
+			var android_failure = res['android']['failure'];
+			var iphone_success = res['iphone']['success'];
+			var iphone_failure = res['iphone']['failure'];			
+			alert('android success : '+android_success+'\nandroid failure : '+android_failure+'\niphone success : '+iphone_success);
+			
+			$('#title').val('');
+			$('#message').val('');
+			$('#information').val('');			
+		}
+
+		function Error(data){	
+			var res = jQuery.parseJSON(data);
+			alert('Error'+res);
+		}		
+
+	</script>
+</head>
+<body>
+	<div data-role="page" id='home'>		
+		<div data-role="header" data-position="fixed">
+			<a data-icon="grid" href='menu.html' data-ajax = 'false'>功能表</a>
+			<h1>主動通知</h1>
+		</div>
+		<div data-role="content">
+			<form>
+				<select name="title" id="title">
+					<option id='chose' value="0">請選擇</option>
+					<option value="緊急">緊急</option>
+					<option value="警告">警告</option>
+					<option value="通知">通知</option>
+				</select>
+				<input type='text' id='message' placeholder="請輸入訊息"></input>
+				<textarea id='information' name="information" placeholder="請輸入內容"></textarea><br/>
+				<input type='button' id="btn" value='send'></input>
+			</form>		
+		</div>		
+		<div data-role="footer" data-position="fixed">
+			<h1>inwinSTACK</h1>
+		</div>
+	</div>	
+	<!--==============訊息視窗================-->
+		<div data-role="page" id="sure">
+			<div style="margin-top:50%;">
+				<div data-role="header">
+					<h3 class="sure-1"></h3>
+				</div>
+				<div role="main" class="ui-content">
+					<p class="sure-2"></p>
+					<a href="#" data-role="button" data-rel="back" data-theme="b">確定</a> 
+				</div>
+			</div>	
+		</div>
+	<!--==============訊息視窗================-->
+</body>
+</html>

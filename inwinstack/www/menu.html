@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>Text</title>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<link rel="stylesheet" href="js/main.css">					
+	<script type="text/javascript" src="js/menu.js"></script>		
+<!-- 開啟推播功能 -->
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src='js/gcm.js'></script> 
+	<script type="text/javascript" src="PushNotification.js"></script>	
+</head>
+<body>
+<!--功能頁-->
+	<div data-role="page" id='home'>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>主畫面</h1>
+		</div>
+		<div data-role="content" >
+			<label align="center">選擇tenant</label>
+			<select id = 'tenant' data-ajax='false'>
+			</select>			
+			<ul data-role="listview" data-inset="true" >
+				<li><a href="Overview.html"  data-ajax = 'false'>資源概況</a></li>	
+				<li><a href="server_info.html" id='server' data-ajax = 'false'>伺服器資料</a></li>			
+				<li><a href="#" data-ajax = 'false' id='vm_info'>虛擬機資料</a></li>		
+				<li><a href="#" data-ajax = 'false' id='ceilmeter'>虛擬機使用狀況</a></li>
+				<li><a href="index.html" id='out' data-ajax = 'false'>登出</a></li>												
+			</ul>									
+		</div>		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>實踐大學高雄校區-資訊管理系</h1>
+		</div>
+	</div>
+</body>
+</html>

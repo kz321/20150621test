@@ -1,0 +1,17 @@
+﻿span {
+	font-size : 120%;
+	font-weight:bold;
+}
+
+.tb {
+	background-color : white;
+}
+
+.silver	{
+	color : silver;
+}	
+
+#overview_chart{
+	height: 150px;
+}
+	
